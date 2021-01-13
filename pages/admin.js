@@ -41,6 +41,7 @@ export default function Admin() {
 
   return (
     <section>
+       <input type="button" value="Log out" onClick={logout}></input>
       <Route />
     </section>
   );
