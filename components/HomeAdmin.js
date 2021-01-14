@@ -8,9 +8,9 @@ export default function HomeAdmin({ token }) {
   return (
     <section>
       
-       {/* <Game token={token} /> */}
+       <Game token={token} />
       {/* <h2>Event</h2> */}
-      <Event token={token} /> 
+      {/* <Event token={token} />  */}
       {/* <h2>Hint</h2> */}
       {/* <Hint token={token} /> */}
       {/* <h2>SliderHint</h2>  */}

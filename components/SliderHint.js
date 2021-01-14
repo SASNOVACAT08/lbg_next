@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-export default function Hint({token}){
+export default function SliderHint({token}){
   const [sliderHints, setSliderHints] = useState([]);
 
   useEffect(async () => {
