@@ -1,0 +1,20 @@
+
+footer .social_links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;   
+}
+footer .social_links a img{
+    margin:auto 8.5px;
+    width: 51px;
+    height:51px
+}
+footer .copyright{
+    text-align: center;
+    margin-top: 5px;
+    color: #fff;
+    background-color: #000000;
+}
+footer a:hover{
+    text-decoration: underline;
+}

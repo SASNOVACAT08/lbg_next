@@ -1,0 +1,21 @@
+main{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    color: #FFF;
+    height:80vh;
+    justify-content:space-evenly;
+}
+.timer {
+    display: flex;
+    font-size: 79px;
+    color: #C78F25;
+}
+@media only screen and (max-width:768px){
+    main{
+      flex-direction: column;
+    }
+    .timer{
+        font-size: 64px;
+    }
+}

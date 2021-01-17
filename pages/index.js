@@ -1,5 +1,8 @@
 import io from "socket.io-client";
 import { useEffect, useState } from "react";
+import MyHead from "../components/MyHead";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [hint, setHint] = useState([]);
@@ -8,6 +11,8 @@ export default function Home() {
   const [hour, setHour] = useState("00");
   const [minute, setMinute] = useState("00");
   const [second, setSecond] = useState("00");
+
+  // const image = require ("/images/logo_la_belle_blanc.png");
 
   useEffect(async () => {
     const socket = io("http://localhost:4000/");
@@ -44,6 +49,7 @@ export default function Home() {
     });
     let res = await data.json();
     setHint(res.data);
+    console.log(res.data);
     data = await fetch("http://localhost:4000/public/sliderhint", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -51,28 +57,33 @@ export default function Home() {
     res = await data.json();
     setSliderHint(res.data);
   }
-
   return (
     <section>
-      {`${day} : ${hour} : ${minute} : ${second}`}
-      <h2>Hint</h2>
-      <article>
-        {hint.map((hin) => (
-          <div key={hin.id}>
-            <p>{hin.name}</p>
-            <p>{hin.content}</p>
-          </div>
-        ))}
-      </article>
+      <MyHead/>
+  <Header/>
+    <main>
+      <article className="slider_hint">
       <h2>Slider Hint</h2>
-      <article>
         {sliderHint.map((slh) => (
           <div key={slh.id}>
             <p>{slh.name}</p>
-            <p>{slh.link}</p>
+            <iframe width="90%" height="90%" src={slh.link} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
           </div>
         ))}
       </article>
+      <div className="timer"><span> {`${day} : ${hour} : ${minute} : ${second}`}</span></div>
+      <article className="hint">
+      <h2>Hint</h2>
+          {hint.map((h) => (
+           <div key={h.id}>
+            <p>{h.name}</p>
+             <p>{h.content}</p>
+           </div>
+      ))}
+      <div className="bg"></div>
+    </article>
+    </main>
+      <Footer/>
     </section>
   );
 }

@@ -1,16 +1,62 @@
+@import "header.css";
+@import "timer.css";
+@import "BurgerMenu.css";
+@import "footer.css";
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-image: url('/images/animation_1.gif ');
+    /* background-image: url('/images/image_fond_site_3.png '); */
+    background-repeat: no-repeat;
+    background-size:cover;  
+     height: 100vh;
+
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
+article{
+  text-align: center;
+  height: 37%;
+  margin-top: 5%;
+  width: 25%;
+  position: relative;
+}
+article .bg{
+  opacity:.5;
+  width: 100%;
+  height:100%;
+  background-color: red;
+  z-index:-5;
+  position: absolute
+}
+article h2{
+  /* background-color: red; */
+  opacity: 0.8;
+  margin: 0;
+  padding: 15px;
+
+}
 
 * {
   box-sizing: border-box;
+}
+@media only screen and (max-width:768px){
+  body{
+    background-image: url('/images/animation_2.gif ');
+  }
+  article{
+    width:80%;
+    background-color:black;
+    opacity:0.8;
+  }
+  article .bg{
+  display:none;  
+  }
 }

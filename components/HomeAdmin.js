@@ -12,9 +12,9 @@ export default function HomeAdmin({ token }) {
       {/* <h2>Event</h2> */}
       {/* <Event token={token} />  */}
       {/* <h2>Hint</h2> */}
-      <Hint token={token} />
+      {/* <Hint token={token} /> */}
       {/* <h2>SliderHint</h2>  */}
-      {/* <SliderHint token={token} /> */}
+      <SliderHint token={token} />
 
     </section>
   );

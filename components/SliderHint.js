@@ -1,11 +1,12 @@
 import {useEffect, useState} from "react";
 
 export default function SliderHint({token}){
+  const [sliderHintId, setSliderHintId] = useState([]);
   const [sliderHints, setSliderHints] = useState([]);
   const [name, setName] = useState([]);
   const [link, setLink] = useState([]);
   const [isVisible, setIsVisible] = useState([]);
-  const [gameId, setGameId] = useState([]);
+
 
   useEffect(async () => {
     let data = await fetch ("http://localhost:4000/sliderhint",{
@@ -22,31 +23,44 @@ export default function SliderHint({token}){
   },
   
   );
-  async function postSliderHint(){
-    let data = await fetch("http://localhost:4000/sliderhint", {
-        method: "POST",
-        headers: { "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-       },
+  async function putSliderHint(){
+    
+    let data = await fetch ("http://localhost:4000/sliderhint/"+id,{ 
+      method:"PUT",
+      headers:{ 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }, 
+      body: JSON.stringify({
+        name,
+        isVisible,
+        link,
+        id,
+      })
       
-        body: JSON.stringify({
-          name,
-          link,
-          isVisible,
-          gameId,
-        }),
-      });
-  
-      let res = await data.json();
-      console.log(res);
-      if (res.type === "success") {
-       
-        console.log(res.data);
-      }
-    }
- async function deleteSliderHint(id){
-  console.log(id);
+    }); 
+    console.log(data);
+let res = await data.json();
+console.log(res);
+if (res.type === "success") {
+ 
+  console.log(res.data[0]);
+} else{
+  console.log(res.data);
+}
+}
+  async function postSliderHint(){
+    let data = await fetch ("http://localhost:4000/sliderhint/",{ 
+      method:"DELETE",
+      headers:{ 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }, 
 
+  }); 
+}
+  
+ async function deleteSliderHint(id){
     try{
       
     let data = await fetch ("http://localhost:4000/sliderhint/"+id,{ 
@@ -75,6 +89,8 @@ export default function SliderHint({token}){
         ))}
          <form>
           <h2> Post a SliderHint</h2> 
+
+          
           <input
             type="text"
             value={name}
@@ -90,6 +106,39 @@ export default function SliderHint({token}){
             onChange={({ target: { value } }) => setLink(value)}
           />
           <input
+            type="text"
+            value={sliderHintId}
+            name="sliderHintId"
+            placeholder="sliderHintId"
+            onChange={({ target: { value } }) => setSliderHintId(parseInt(value))  }
+          />
+          <input
+            type="checkbox"
+            value={isVisible}
+            name="isVisible"
+            placeholder="isVisible"
+            onChange={({ target: { value } }) => setIsVisible(value == "true")  }
+          />
+
+        <input type="button" value="add game" onClick={postSliderHint} />
+      </form>
+      <form>
+          <h2> Put a hint</h2> 
+          <input 
+            type="text"
+            value={name}
+            name="name"
+            placeholder="name of the hint"
+            onChange={({target: {value}} )=> setName(value)}
+          />
+          <input 
+            type="text"
+            value={link}
+            name="link"
+            placeholder="link of the hint"
+            onChange={({target: {value}} )=> setLink(value)}
+          />
+          <input
             type="checkbox"
             value={isVisible}
             name="isVisible"
@@ -98,12 +147,12 @@ export default function SliderHint({token}){
           />
           <input
             type="text"
-            value={gameId}
-            name="gameId"
-            placeholder="gameId"
-            onChange={({ target: { value } }) => setGameId(parseInt(value))  }
+            value={sliderHintId}
+            name="sliderHintId"
+            placeholder="sliderHint"
+            onChange={({ target: { value } }) => setId(parseInt(value))  }
           />
-        <input type="button" value="add game" onClick={postSliderHint} />
+        <input type="button" value="add game" onClick={putSliderHint} />
       </form>
          </section>
     )

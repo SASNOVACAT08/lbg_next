@@ -132,7 +132,6 @@ export default function Hint({token}){
       </form>
       <hr/>
       <form>
-      <form>
           <h2> Put a hint</h2> 
           <input 
             type="text"
@@ -163,7 +162,6 @@ export default function Hint({token}){
             onChange={({ target: { value } }) => setHintId(parseInt(value))  }
           />
         <input type="button" value="add game" onClick={putHint} />
-      </form>
       </form>
          </section>
     )

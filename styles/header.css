@@ -1,0 +1,45 @@
+header{
+    height:90px;
+    position: sticky;
+    top: 0;
+    width: 100%;  
+    border: 1px transparent solid;  
+    z-index:10000;
+}
+header nav{
+    height: 100%;
+}
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header nav ul h1 img{
+    width: 211px;
+    height: inherit;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    align-items: center;
+    margin: -8vh 25px;
+
+}
+@media only screen and (max-width:768px){
+    header nav ul{
+        flex-direction: row-reverse;
+    }
+    .timer{
+        font-size: 64px;
+    }
+    header nav ul h1 img{
+        margin: -8vh -40px;
+
+    }
+    .nav{
+        background-color: #000  ;
+        width:100vw;
+    }
+}

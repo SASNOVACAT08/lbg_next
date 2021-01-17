@@ -1,0 +1,74 @@
+label{
+    display:block;
+    font-size: 25px;
+    color:#fff;
+    padding: 10vh 3vw 0 0;
+    text-align: right;
+    
+}
+.nav{
+    background-color:#000;
+
+}
+.menu {
+    text-align:left;
+    width: 100%;
+    padding: 15px;
+    width: 40vw;
+    display:none;
+    background-color:#000;
+    color: #fff;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+}
+input#toggle:checked ~ div.nav{
+    background: black;
+    margin-left: -11px;
+}
+.menu a {
+      font-size: 79px;
+    display:block;
+
+    margin: 0;
+
+  }
+  label:hover{
+        cursor:pointer;
+  }
+
+    #toggle:checked + .menu{
+    display:block;
+    float: right;
+    transition:1s ease-in;
+  }
+
+  #toggle:not(:checked) + .nav{
+    widows: 5%;
+  }
+  #toggle:checked + label{
+    margin-right: 5vw;
+  }
+ #toggle{
+  display:none;
+}
+
+
+
+@media only screen and (max-width:768px){
+
+  .menu{
+    width:100%;
+  }
+  /* label {
+    width:max-content;
+  } */
+  #toggle:checked .nav { 
+    width:100vw
+  }
+  /* ul > div {
+    margin-left: -42px;
+    margin-top: -30px;
+} */
+
+}
